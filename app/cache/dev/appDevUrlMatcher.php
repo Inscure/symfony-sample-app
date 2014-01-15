@@ -135,27 +135,45 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/hello')) {
-            // acme_hello_create
-            if ($pathinfo === '/hello/create') {
-                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::createAction',  '_route' => 'acme_hello_create',);
+        if (0 === strpos($pathinfo, '/product')) {
+            // acme_hello_default_index
+            if (rtrim($pathinfo, '/') === '/product') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'acme_hello_default_index');
+                }
+
+                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::indexAction',  '_route' => 'acme_hello_default_index',);
             }
 
-            // acme_hello_delete
-            if ($pathinfo === '/hello/delete') {
-                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::deleteAction',  '_route' => 'acme_hello_delete',);
+            // acme_hello_default_create
+            if ($pathinfo === '/product/create') {
+                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::createAction',  '_route' => 'acme_hello_default_create',);
             }
 
-            // acme_hello_new
-            if ($pathinfo === '/hello/new') {
-                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::newAction',  '_route' => 'acme_hello_new',);
+            // acme_hello_default_new
+            if ($pathinfo === '/product/new') {
+                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::newAction',  '_route' => 'acme_hello_default_new',);
             }
 
-            // acme_hello_list
-            if ($pathinfo === '/hello/list') {
-                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::listAction',  '_route' => 'acme_hello_list',);
+            // acme_hello_default_show
+            if ($pathinfo === '/product/show') {
+                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::showAction',  '_route' => 'acme_hello_default_show',);
             }
 
+            // product_list
+            if ($pathinfo === '/product/list') {
+                return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::listAction',  '_route' => 'product_list',);
+            }
+
+        }
+
+        // main
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'main');
+            }
+
+            return array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::indexAction',  '_route' => 'main',);
         }
 
         // _welcome

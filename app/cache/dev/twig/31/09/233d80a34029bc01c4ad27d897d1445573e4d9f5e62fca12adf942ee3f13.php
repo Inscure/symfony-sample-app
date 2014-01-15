@@ -74,28 +74,18 @@ class __TwigTemplate_3109233d80a34029bc01c4ad27d897d1445573e4d9f5e62fca12adf942e
     ";
         // line 17
         $this->displayBlock('content_header', $context, $blocks);
-        // line 26
-        echo "
+        // line 27
+        echo "        
+    
+
     <div class=\"block\">
         ";
-        // line 28
-        $this->displayBlock('content', $context, $blocks);
-        // line 29
-        echo "    </div>
-
-    ";
         // line 31
-        if (array_key_exists("code", $context)) {
-            // line 32
-            echo "        <h2>Code behind this page</h2>
-        <div class=\"block\">
-            <div class=\"symfony-content\">";
-            // line 34
-            echo (isset($context["code"]) ? $context["code"] : $this->getContext($context, "code"));
-            echo "</div>
-        </div>
-    ";
-        }
+        $this->displayBlock('content', $context, $blocks);
+        // line 32
+        echo "    </div>
+        
+";
     }
 
     // line 17
@@ -106,7 +96,7 @@ class __TwigTemplate_3109233d80a34029bc01c4ad27d897d1445573e4d9f5e62fca12adf942e
             ";
         // line 19
         $this->displayBlock('content_header_more', $context, $blocks);
-        // line 22
+        // line 23
         echo "        </ul>
 
         <div style=\"clear: both\"></div>
@@ -118,12 +108,16 @@ class __TwigTemplate_3109233d80a34029bc01c4ad27d897d1445573e4d9f5e62fca12adf942e
     {
         // line 20
         echo "                <li><a href=\"";
-        echo $this->env->getExtension('routing')->getPath("_demo");
-        echo "\">Demo Home</a></li>
+        echo $this->env->getExtension('routing')->getPath("main");
+        echo "\">Strona główna</a></li>
+                <li><a href=\"";
+        // line 21
+        echo $this->env->getExtension('routing')->getPath("product_list");
+        echo "\">Lista produktów</a></li>
             ";
     }
 
-    // line 28
+    // line 31
     public function block_content($context, array $blocks = array())
     {
     }
@@ -140,6 +134,6 @@ class __TwigTemplate_3109233d80a34029bc01c4ad27d897d1445573e4d9f5e62fca12adf942e
 
     public function getDebugInfo()
     {
-        return array (  127 => 28,  120 => 20,  117 => 19,  110 => 22,  108 => 19,  105 => 18,  102 => 17,  94 => 34,  90 => 32,  88 => 31,  84 => 29,  82 => 28,  78 => 26,  76 => 17,  73 => 16,  64 => 13,  61 => 12,  56 => 11,  53 => 10,  47 => 8,  41 => 5,  36 => 4,  33 => 3,);
+        return array (  121 => 31,  115 => 21,  110 => 20,  107 => 19,  100 => 23,  98 => 19,  95 => 18,  92 => 17,  86 => 32,  84 => 31,  78 => 27,  76 => 17,  73 => 16,  64 => 13,  61 => 12,  56 => 11,  53 => 10,  47 => 8,  41 => 5,  36 => 4,  33 => 3,);
     }
 }

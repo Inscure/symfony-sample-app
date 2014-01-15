@@ -11,7 +11,6 @@ class __TwigTemplate_571768671b97cede26eea579e3cdca0f1888ed60cfa004fe1f9347d3382
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
-            'content_header' => array($this, 'block_content_header'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -32,12 +31,6 @@ class __TwigTemplate_571768671b97cede26eea579e3cdca0f1888ed60cfa004fe1f9347d3382
         echo "Symfony - Welcome";
     }
 
-    // line 5
-    public function block_content_header($context, array $blocks = array())
-    {
-        echo "";
-    }
-
     // line 7
     public function block_content($context, array $blocks = array())
     {
@@ -46,12 +39,20 @@ class __TwigTemplate_571768671b97cede26eea579e3cdca0f1888ed60cfa004fe1f9347d3382
         $context["version"] = ((twig_constant("Symfony\\Component\\HttpKernel\\Kernel::MAJOR_VERSION") . ".") . twig_constant("Symfony\\Component\\HttpKernel\\Kernel::MINOR_VERSION"));
         // line 9
         echo "
-    <h1 class=\"title\">Welcome!</h1>
-
-    Hello ";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
-        echo "
+    <h2 class=\"title\">Witaj w sklepie internetowym!</h2>
+    <section class=\"no-margin\">
+        <p>Znajdziesz tutaj listę produktów, które możesz dodać do swojego koszyka.</p>
+        <p>System zapamiętuje Twoje dane, dzięki czemu nie musisz ich podawać przy każdej realizacji zlecenia.</p>
+        <p>Po zalogowaniu się, możliwe będzie zamieszczanie produktów na liście życzeń.</p>
+    </section>
+    
+    <h3 class=\"last\">Lista funkcjonalności</h2>
+    <section>
+        <ul class=\"list\">
+            <li>Listowanie produktów</li>
+        </ul>
+    </section>
+    
     
 ";
     }
@@ -68,6 +69,6 @@ class __TwigTemplate_571768671b97cede26eea579e3cdca0f1888ed60cfa004fe1f9347d3382
 
     public function getDebugInfo()
     {
-        return array (  53 => 12,  48 => 9,  45 => 8,  42 => 7,  36 => 5,  30 => 3,);
+        return array (  41 => 9,  38 => 8,  35 => 7,  29 => 3,);
     }
 }

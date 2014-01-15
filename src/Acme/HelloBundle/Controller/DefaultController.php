@@ -6,31 +6,56 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Acme\HelloBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Request;
 use Acme\HelloBundle\Form\ProductForm;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+/**
+ * @Route("/product")
+ */
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    /**
+     * 
+     * 
+     * @param string $name
+     * @return type
+     */
+    public function dAction($name)
     {
-        return $this->render('AcmeHelloBundle:Default:index.html.twig', array('name' => $name));
+        var_dump($this->render('AcmeHelloBundle:Default:index.html.twig', array('name' => $name))); exit;
     }
-	
-	public function createAction()
-	{
-		$product = new Product();
-		$product->setName('A Foo Bar');
-		$product->setPrice('19.99');
-		$product->setDescription('Lorem ipsum dolor');
+    
+    /**
+     * @Route("/")
+     * @return Response
+     */
+    public function indexAction()
+    {
+        return $this->render('AcmeHelloBundle:Default:index.html.twig');
+    }
 
-		$em = $this->getDoctrine()->getManager();
-		$em->persist($product);
-		$em->flush();
+    /**
+     * @Route("/create")
+     * @return \Acme\HelloBundle\Controller\Response
+     */
+    public function createAction()
+    {
+            $product = new Product();
+            $product->setName('A Foo Bar');
+            $product->setPrice('19.99');
+            $product->setDescription('Lorem ipsum dolor');
 
-		return new Response('Created product id '.$product->getId());
-	}
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+
+            return new Response('Created product id '.$product->getId());
+    }
 	
         /**
          * Dodawanie produktu
          * 
+         * @Route("/new")
          * @param \Symfony\Component\HttpFoundation\Request $request
          * @return response
          */
@@ -69,6 +94,11 @@ class DefaultController extends Controller
             ));
 	}
 	
+        /**
+         * @Route("/show")
+         * @param type $id
+         * @return \Acme\HelloBundle\Controller\Response
+         */
 	public function showAction($id)
 	{
 		$product = $this->getDoctrine()
@@ -80,6 +110,10 @@ class DefaultController extends Controller
 		return new Response;
 	}
         
+        /**
+         * @Route("/list", name="product_list")
+         * @return type
+         */
         public function listAction()
         {
             $product = $this->getDoctrine()
@@ -98,7 +132,7 @@ class DefaultController extends Controller
             );
         }
 	
-	public function showProductAction($id)
+	/*public function showProductAction($id)
 	{
 		$category = $this->getDoctrine()
 			->getRepository('AcmeHelloBundle:Product')
@@ -122,5 +156,5 @@ class DefaultController extends Controller
 		}
 		
 		return new Response;
-	}
+	}*/
 }

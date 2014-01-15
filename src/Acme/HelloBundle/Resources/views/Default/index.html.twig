@@ -2,13 +2,24 @@
 
 {% block title %}Symfony - Welcome{% endblock %}
 
-{% block content_header '' %}
+
 
 {% block content %}
     {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::MAJOR_VERSION') ~ '.' ~ constant('Symfony\\Component\\HttpKernel\\Kernel::MINOR_VERSION')%}
 
-    <h1 class="title">Welcome!</h1>
-
-    Hello {{name}}
+    <h2 class="title">Witaj w sklepie internetowym!</h2>
+    <section class="no-margin">
+        <p>Znajdziesz tutaj listę produktów, które możesz dodać do swojego koszyka.</p>
+        <p>System zapamiętuje Twoje dane, dzięki czemu nie musisz ich podawać przy każdej realizacji zlecenia.</p>
+        <p>Po zalogowaniu się, możliwe będzie zamieszczanie produktów na liście życzeń.</p>
+    </section>
+    
+    <h3 class="last">Lista funkcjonalności</h2>
+    <section>
+        <ul class="list">
+            <li>Listowanie produktów</li>
+        </ul>
+    </section>
+    
     
 {% endblock %}
