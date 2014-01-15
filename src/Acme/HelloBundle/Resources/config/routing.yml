@@ -1,0 +1,12 @@
+acme_hello_create:
+    pattern:  /hello/create
+    defaults: { _controller: AcmeHelloBundle:Default:create }
+acme_hello_delete:
+    pattern:  /hello/delete
+    defaults: { _controller: AcmeHelloBundle:Default:delete }
+acme_hello_new:
+    pattern:  /hello/new
+    defaults: { _controller: AcmeHelloBundle:Default:new }
+acme_hello_list:
+    pattern: /hello/list
+    defaults: {_controller: AcmeHelloBundle:Default:list }
