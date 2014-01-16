@@ -13,12 +13,12 @@ use Psr\Log\LoggerInterface;
 class appProdUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerator
 {
     static private $declaredRoutes = array(
-        'acme_hello_default_index' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/',    ),  ),  4 =>   array (  ),),
-        'acme_hello_default_create' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::createAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/create',    ),  ),  4 =>   array (  ),),
-        'acme_hello_default_new' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::newAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/new',    ),  ),  4 =>   array (  ),),
-        'acme_hello_default_show' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::showAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/show',    ),  ),  4 =>   array (  ),),
-        'product_list' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::listAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/list',    ),  ),  4 =>   array (  ),),
-        'main' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),),
+        'acme_hello_index_index' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\IndexController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'product_list' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\ProductController::listAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'acme_hello_product_create' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\ProductController::createAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/create',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'acme_hello_product_new' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\ProductController::newAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/new',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'acme_hello_product_show' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\ProductController::showAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/product/show',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'main' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Acme\\HelloBundle\\Controller\\IndexController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
     );
 
     /**
@@ -36,8 +36,8 @@ class appProdUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
             throw new RouteNotFoundException(sprintf('Unable to generate a URL for the named route "%s" as such route does not exist.', $name));
         }
 
-        list($variables, $defaults, $requirements, $tokens, $hostTokens) = self::$declaredRoutes[$name];
+        list($variables, $defaults, $requirements, $tokens, $hostTokens, $requiredSchemes) = self::$declaredRoutes[$name];
 
-        return $this->doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens);
+        return $this->doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens, $requiredSchemes);
     }
 }

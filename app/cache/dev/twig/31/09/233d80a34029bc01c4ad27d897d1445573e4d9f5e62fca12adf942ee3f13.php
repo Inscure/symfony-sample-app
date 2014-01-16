@@ -38,7 +38,7 @@ class __TwigTemplate_3109233d80a34029bc01c4ad27d897d1445573e4d9f5e62fca12adf942e
         echo "\" />
     <link rel=\"stylesheet\" href=\"";
         // line 5
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/acmehello/css/demo.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("layout/css/demo.css"), "html", null, true);
         echo "\" />
 ";
     }
@@ -134,6 +134,6 @@ class __TwigTemplate_3109233d80a34029bc01c4ad27d897d1445573e4d9f5e62fca12adf942e
 
     public function getDebugInfo()
     {
-        return array (  121 => 31,  115 => 21,  110 => 20,  107 => 19,  100 => 23,  98 => 19,  95 => 18,  92 => 17,  86 => 32,  84 => 31,  78 => 27,  76 => 17,  73 => 16,  64 => 13,  61 => 12,  56 => 11,  53 => 10,  47 => 8,  41 => 5,  36 => 4,  33 => 3,  54 => 7,  51 => 6,  34 => 5,  31 => 4,  28 => 3,);
+        return array (  121 => 31,  115 => 21,  110 => 20,  107 => 19,  100 => 23,  98 => 19,  95 => 18,  92 => 17,  86 => 32,  84 => 31,  78 => 27,  76 => 17,  73 => 16,  64 => 13,  61 => 12,  56 => 11,  53 => 10,  47 => 8,  36 => 4,  33 => 3,  41 => 5,  38 => 8,  35 => 7,  29 => 3,);
     }
 }
