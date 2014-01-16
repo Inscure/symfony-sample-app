@@ -36,7 +36,6 @@
     <parameter key="mailer_password">null</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="secret">af906560bb24530e6303c31d215748effcfdb72e</parameter>
-    <parameter key="database_path">null</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
     <parameter key="response_listener.class">Symfony\Component\HttpKernel\EventListener\ResponseListener</parameter>
@@ -746,7 +745,7 @@
       <tag name="translation.loader" alias="yml"/>
     </service>
     <service id="translation.loader.xliff" class="Symfony\Component\Translation\Loader\XliffFileLoader">
-      <tag name="translation.loader" alias="xlf" legacy-alias="xliff"/>
+      <tag name="translation.loader" alias="xlf" legacy_alias="xliff" legacy-alias="xliff"/>
     </service>
     <service id="translation.loader.po" class="Symfony\Component\Translation\Loader\PoFileLoader">
       <tag name="translation.loader" alias="po"/>
@@ -2240,13 +2239,13 @@
     <service id="doctrine.dbal.logger.profiling.default" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
     <service id="doctrine.dbal.default_connection" class="stdClass" factory-method="createConnection" factory-service="doctrine.dbal.connection_factory">
       <argument type="collection">
-        <argument key="dbname">symfony</argument>
+        <argument key="driver">pdo_mysql</argument>
         <argument key="host">localhost</argument>
         <argument key="port">null</argument>
+        <argument key="dbname">symfony</argument>
         <argument key="user">root</argument>
         <argument key="password">null</argument>
         <argument key="charset">UTF8</argument>
-        <argument key="driver">pdo_mysql</argument>
         <argument key="driverOptions" type="collection"/>
       </argument>
       <argument type="service">
