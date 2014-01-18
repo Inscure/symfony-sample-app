@@ -22,20 +22,7 @@ class ProductController extends Controller
      */
     public function listAction()
     {
-        
-
-   
-
-   
-    
-        $product = $this->getDoctrine()
-            ->getRepository('AcmeHelloBundle:Product')
-        ;
-
-        // Rekordy produktów
-        $productRows = $product->findAll();
-        
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $query = $em->createQueryBuilder();
 
         $query->select(array('p'))->from('AcmeHelloBundle:Product', 'p');
