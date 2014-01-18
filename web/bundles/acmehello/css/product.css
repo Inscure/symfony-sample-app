@@ -1,0 +1,26 @@
+.product-block {
+	border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 17px;
+}
+
+.product-description {
+	
+}
+
+.product-description p {
+	margin: 0;
+	padding: 0;
+}
+
+.product-options {
+	font-size: 12px;
+	text-align: center;
+}
+
+.product-options :first-child {
+	margin-right: 20px;
+}
+
+#product-mode {
+	margin-bottom: 8px;
+}

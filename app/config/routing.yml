@@ -2,20 +2,13 @@ acme_user:
     resource: "@AcmeUserBundle/Resources/config/routing.yml"
     prefix:   /
 
-acme_auth:
-    resource: "@AcmeAuthBundle/Resources/config/routing.yml"
-    prefix:   /
-
 acme_hello:
     resource: "@AcmeHelloBundle/Resources/config/routing.yml"
     prefix:   /
 
-acme_demo:
-    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
-    prefix:   /
-
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /auth
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
@@ -24,11 +17,23 @@ fos_user_profile:
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
     prefix: /register
+    
+fos_user_resetting_request:
+    path: /password/reset/request
+    defaults: { _controller: FOSUserBundle:Resetting:request}
+    
+fos_user_resetting_send_email:
+    path: /password/reset/send-email
+    defaults: { _controller: FOSUserBundle:Resetting:sendEmail }
+    
+fos_user_resetting_check_email:
+    path: /password/reset/check-email
+    defaults: { _controller: FOSUserBundle:Resetting:checkEmail }
 
-fos_user_resetting:
-    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
-
+fos_user_resetting_reset:
+    path: /password/reset
+    defaults: { _controller: FOSUserBundle:Resetting:reset }
+    
 fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
+    path: /profile/password/change
+    defaults: { _controller: FOSUserBundle:ChangePassword:changePassword}
