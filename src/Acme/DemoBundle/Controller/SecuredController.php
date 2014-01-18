@@ -15,20 +15,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class SecuredController extends Controller
 {
     /**
-     * @Route("/login", name="_demo_login")
+     * @Route("/login", name="_login")
      * @Template()
      */
     public function loginAction(Request $request)
     {
+        $session = $request->getSession();
+
+        // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+            $error = $request->attributes->get(
+                SecurityContext::AUTHENTICATION_ERROR
+            );
         } else {
-            $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
 
-        return array(
-            'last_username' => $request->getSession()->get(SecurityContext::LAST_USERNAME),
-            'error'         => $error,
+        return $this->render(
+            'AcmeDemoBundle:Secured:login.html.twig',
+            array(
+                // last username entered by the user
+                'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+                'error'         => $error,
+            )
         );
     }
 
@@ -38,6 +48,7 @@ class SecuredController extends Controller
     public function securityCheckAction()
     {
         // The security layer will intercept this request
+        return new Response;
     }
 
     /**

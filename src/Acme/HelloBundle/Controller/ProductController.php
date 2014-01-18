@@ -22,18 +22,36 @@ class ProductController extends Controller
      */
     public function listAction()
     {
+        
+
+   
+
+   
+    
         $product = $this->getDoctrine()
             ->getRepository('AcmeHelloBundle:Product')
         ;
 
         // Rekordy produktów
         $productRows = $product->findAll();
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $query = $em->createQueryBuilder();
 
+        $query->select(array('p'))->from('AcmeHelloBundle:Product', 'p');
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+    
         // Wyświetlanie szablonu
         return $this->render(
             'AcmeHelloBundle:Default:list.html.twig', 
             array(
-                'products' => $productRows
+                'pagination' => $pagination
             )
         );
      }
