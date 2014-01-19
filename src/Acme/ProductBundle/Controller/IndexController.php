@@ -21,7 +21,7 @@ class IndexController extends Controller
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQueryBuilder();
 
-        $query->select(array('p'))->from('AcmeHomePageBundle:Product', 'p');
+        $query->select(array('p'))->from('AcmeProductBundle:Product', 'p');
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

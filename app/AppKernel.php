@@ -21,6 +21,8 @@ class AppKernel extends Kernel
 			new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Acme\HomePageBundle\AcmeHomePageBundle(),
             new Acme\ProductBundle\AcmeProductBundle(),
+            new Acme\CategoryBundle\AcmeCategoryBundle(),
+            new Acme\CashBundle\AcmeCashBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

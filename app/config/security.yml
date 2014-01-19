@@ -26,4 +26,8 @@ security:
         - { path: ^/auth/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/product/add, role: ROLE_ADMIN }
+        - { path: ^/product/edit, role: ROLE_ADMIN }
+        - { path: ^/product/delete, role: ROLE_ADMIN }
+        - { path: ^/category/, role: ROLE_ADMIN }
+        - { path: ^/category$, role: IS_AUTHENTICATED_ANONYMOUSLY }

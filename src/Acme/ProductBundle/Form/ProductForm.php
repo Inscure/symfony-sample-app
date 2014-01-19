@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\HomePageBundle\Form;
+namespace Acme\ProductBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +13,7 @@ class ProductForm extends AbstractType
             ->add('name')
             ->add('description')
             ->add('price')
-            //->add('dueDate', null, array('widget' => 'single_text'))
+  
             ->add('save', 'submit');
     }
     

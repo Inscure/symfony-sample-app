@@ -2,10 +2,10 @@
 
 namespace Acme\ProductBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Acme\ProductBundle\Entity\Product;
+use Acme\ProductBundle\Form\ProductForm;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Acme\Product\Form\ProductForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**

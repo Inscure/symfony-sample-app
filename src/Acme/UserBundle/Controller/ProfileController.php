@@ -15,7 +15,7 @@ class ProfileController extends Controller
      * @param type $name
      * @return type
      */
-    public function indexAction()
+    public function editAction()
     {
         return new Response;
     }

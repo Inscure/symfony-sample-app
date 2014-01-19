@@ -1,3 +1,11 @@
+acme_cash:
+    resource: "@AcmeCashBundle/Controller"
+    type: annotation
+
+acme_category:
+    resource: "@AcmeCategoryBundle/Controller"
+    type: annotation
+
 acme_homepage:
     resource: "@AcmeHomePageBundle/Controller"
     type: annotation
