@@ -129,3 +129,35 @@ ul.list li {
 .fright {
     float: right;
 }
+
+.fleft {
+    float:left;
+}
+
+form .field-box {
+    margin-bottom: 8px;
+}
+
+form .field-box ul {
+    display: inline-block;
+}
+
+form .field-box label {
+    width: 250px;
+    display: inline-block;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    padding: 0 5px;
+}
+
+#user-menu {
+    float:left;
+}
+
+#user-menu li {
+    display: inline;
+    margin-right: 10px;
+}
+
+

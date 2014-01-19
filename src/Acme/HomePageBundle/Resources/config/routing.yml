@@ -1,0 +1,6 @@
+acme_homepage_bundle:
+    resource: @AcmeHomePageBundle/Controller
+    type: annotation
+main:
+    path: /
+    defaults: {_controller: AcmeHomePageBundle:Index:index}

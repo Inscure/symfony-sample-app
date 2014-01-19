@@ -1,10 +1,14 @@
-acme_user:
-    resource: "@AcmeUserBundle/Resources/config/routing.yml"
-    prefix:   /
+acme_homepage:
+    resource: "@AcmeHomePageBundle/Controller"
+    type: annotation
 
-acme_hello:
-    resource: "@AcmeHelloBundle/Resources/config/routing.yml"
-    prefix:   /
+acme_user:
+    resource: "@AcmeUserBundle/Controller"
+    type:   annotation
+    
+acme_product:
+    resource: "@AcmeProductBundle/Controller"
+    type:   annotation
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

@@ -1,6 +1,0 @@
-acme_hello_bundle:
-    resource: @AcmeHelloBundle/Controller
-    type: annotation
-main:
-    path: /
-    defaults: {_controller: AcmeHelloBundle:Index:index}

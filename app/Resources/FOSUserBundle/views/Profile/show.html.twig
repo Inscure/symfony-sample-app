@@ -1,0 +1,15 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/fosuser/css/profile.css') }}" />
+{% endblock %}
+
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+    <ul id="edit-profile-options">
+        <li>&raquo; <a href="{{ path('fos_user_profile_edit') }}">Edytuj profil</a></li>
+        <li>&raquo; <a href="{{ path('fos_user_change_password') }}">Zmień hasło</a></li>
+        <li>&raquo; <a href="{{ path('acme_user_profile_edit') }}">Zmień dane do wysyłki</a></li>
+    </ul>
+{% endblock fos_user_content %}
