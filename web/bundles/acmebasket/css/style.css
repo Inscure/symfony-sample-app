@@ -1,0 +1,8 @@
+#costs p {
+	margin: 0;
+	padding: 0;
+}
+
+#costs :first-child {
+	margin-top: 8px;
+}

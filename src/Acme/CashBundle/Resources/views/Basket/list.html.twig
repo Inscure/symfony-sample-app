@@ -1,0 +1,27 @@
+{% extends 'AcmeCashBundle::layout.html.twig' %}
+
+{% block content %}
+    {% if products is empty %}
+        <p>Twój koszyk jest pusty.</p>
+        <p>Przejdź do <a href="{{ path('acme_product_list') }}">listy produktów</a>, by coś tu dodać.</p>
+    {% else %}
+        <p>Ilość produktów w koszyku: {{products|length}}</p>
+        {% for product in products %}
+            <section class="product-block">
+                <span class="">{{product.name}}</span>
+                <span class="fright">&raquo; Usuń z koszyka</span>
+            </section>
+        {% endfor %}
+        <section id="costs" class="tright">
+            <p>Kwota netto: {{ netto }} zł</p>
+            <p>Podatek: 23%</span>
+            <p><strong>Do zapłaty:</strong> {{ brutto }} zł</p>
+        </section>
+        
+        <section class="tright">
+            <a href="{{ path('acme_basket_payment')  }}"><button>Zapłać</button></a>
+        </section>
+    {% endif %}
+
+    
+{% endblock %}
