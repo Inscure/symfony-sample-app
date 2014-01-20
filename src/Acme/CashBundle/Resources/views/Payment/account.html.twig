@@ -1,0 +1,9 @@
+{% extends 'AcmeCashBundle::layout.html.twig' %}
+
+{% block content %}
+    <p>Czy posiadasz konto w naszym sklepie?</p>
+   
+    <p><a href="{{ path('fos_user_security_login') }}">Zaloguj się</a> lub <a href="{{ path('fos_user_registration_register') }}">zarejestruj</a>, by uzyskać pełen dostęp do serwisu.</p>
+    
+    <p class="tright"><a href="{{ path('acme_basket_payment') }}">Pomiń i przejdź do kasy</a></p>
+{% endblock %}

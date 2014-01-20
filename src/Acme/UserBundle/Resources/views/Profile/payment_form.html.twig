@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+
+    <div class="field-box">
+        {{ form_label(form.name) }} 
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+    </div>
+    <div class="field-box">
+        {{ form_label(form.surname) }} 
+        {{ form_widget(form.surname) }}
+        {{ form_errors(form.surname) }}
+    </div>
+    <div class="field-box">
+        {{ form_label(form.city) }} 
+        {{ form_widget(form.city) }}
+        {{ form_errors(form.city) }}
+    </div>
+    <div class="field-box">
+        {{ form_label(form.street) }} 
+        {{ form_widget(form.street) }}
+        {{ form_errors(form.street) }}
+    </div>
+    <div class="field-box">
+        {{ form_label(form.number) }} 
+        {{ form_widget(form.number) }}
+        {{ form_errors(form.number) }}
+    </div>
+    <div class="field-box">
+        {{ form_widget(form.save) }}
+    </div>
+{{ form_end(form) }} 
