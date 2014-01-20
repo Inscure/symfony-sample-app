@@ -24,9 +24,10 @@ $(function() {
 		console.log('click remove');
 		
 		var ajax = $.ajax({
-			'url': addr + 'basket/delete/' + productId,
-			'type': 'get',
+			'url': addr + 'basket/delete',
+			'type': 'post',
 			'dataType': 'json',
+			'data': {id: productId}
 		});
 		
 		ajax.done(function(oJson) {

@@ -1,9 +1,20 @@
 <section class="product-block">
-    <h3>{{product.name}}</h3>
+    <div class="product-head">
+        <h3>{{product.name}}</h3>
+        <span>{{product.price}} zł</span>
+        {% if is_granted("ROLE_ADMIN") %}
+            <section class="fright">
+                <ul class="product-list">
+                    <li><a href="{{ path('acme_product_edit', {'id': product.id}) }}">Edytuj</a></li>
+                    <li><a href="" data-id="{{ product.id }}" class="product-remove">Usuń</a></li>
+                </ul>
+            </section>
+        {% endif %}
+    </div>
     <section class="product-description">
         <p>{{product.description}}</p>
         <section class="product-options">
-            <span data-id="{{ product.id }}" class="add-to-basket">&raquo; Dodaj do koszyka</span>
+            &raquo; <span data-id="{{ product.id }}" class="add-to-basket">Dodaj do koszyka</span>
             <!--<span>&raquo; Dodaj do listy życzeń</span>-->
         </section>
     </section>

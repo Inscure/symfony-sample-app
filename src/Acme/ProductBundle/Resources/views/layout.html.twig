@@ -1,1 +1,7 @@
 {% extends "::layout.html.twig" %}
+
+{% block head %}
+
+    {{ parent() }}
+<link rel="stylesheet" href="{{ asset('bundles/acmeproduct/css/product.css') }}" />
+{% endblock %}

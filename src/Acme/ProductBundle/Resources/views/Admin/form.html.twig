@@ -1,0 +1,44 @@
+{% extends 'AcmeProductBundle::layout.html.twig' %}
+
+{% block content %}
+    
+    {% if success %}
+        
+        {% if type == 'add' %}
+            <p>Produkt został pomyślnie dodany.</p>
+        {% else %}
+            <p>Produkt został pomyślnie zapisany.</p>
+        {% endif %}
+            
+        <ul>
+            <li><a href="{{ path('acme_product_add') }}">Dodaj nowy produkt</a></li>
+            <li><a href="{{ path('acme_product_list') }}">Powrót do listy produktów</a></li>
+        </ul>
+    {% else %}
+        {% if type == 'add' %}
+            <h2>Dodawanie produktu</h2>
+        {% else %}
+            <h2>Edycja produktu</h2>
+        {% endif %}
+
+        {{ form_start(form) }}
+            <div class="field-box">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+
+            <div class="field-box">
+                {{ form_label(form.description) }}
+                {{ form_widget(form.description) }}
+                {{ form_errors(form.description) }}
+            </div>
+
+            <div class="field-box">
+                {{ form_label(form.price) }}
+                {{ form_widget(form.price) }}
+                {{ form_errors(form.price) }}
+            </div>
+        {{ form_end(form) }}
+    {% endif %}
+{% endblock %}

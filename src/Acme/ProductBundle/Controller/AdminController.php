@@ -4,9 +4,11 @@ namespace Acme\ProductBundle\Controller;
 
 use Acme\ProductBundle\Entity\Product;
 use Acme\ProductBundle\Form\ProductForm;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/product")
@@ -16,15 +18,12 @@ class AdminController extends Controller
     /**
      * Dodawanie produktu
      * 
-     * @Route("/add")
+     * @Route("/add", name="acme_product_add")
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @return response
      */
     public function addAction(Request $request)
     {
-        // Informacja, czy ma zostać wyświetlony widok po zapisaniu danych
-        $saved = false;
-
         // Model
         $product = new Product();
 
@@ -32,43 +31,75 @@ class AdminController extends Controller
 
         $form->handleRequest($request);
            
+        $success = false;
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
 
-            $saved = true;
+            $success = true;
         }
 
-        return $this->render('AcmeProductBundle:Admin:add.html.twig', array(
-            'saved' => $saved,
+        return $this->render('AcmeProductBundle:Admin:form.html.twig', array(
+            'success' => $success,
             'form' => $form->createView(),
+            'type' => 'add'
         ));
     }
 
     /**
-     * @Route("/edit/{id}")
+     * @Route("/edit/{id}", name="acme_product_edit")
      * @param int $id
      * @return Response
      */
-    public function editAction($id)
+    public function editAction(Request $request)
     {
-        return $this->render('AcmeProductBundle:Admin:edit.html.twig', array(
-            'saved' => $saved,
+        // Model
+        $product = $this->getDoctrine()
+                ->getRepository('AcmeProductBundle:Product')
+                ->find($request->get('id'));
+
+        $form = $this->createForm(new ProductForm(), $product);
+
+        $form->handleRequest($request);
+           
+        $success = false;
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+
+            $success = true;
+        }
+
+        return $this->render('AcmeProductBundle:Admin:form.html.twig', array(
+            'success' => $success,
             'form' => $form->createView(),
+            'type' => 'edit'
         ));
     }
     
      /**
-     * @Route("/delete/{id}")
-     * @param int $id
+     * @Route("/delete", name="acme_product_delete")
+     * @Method({"POST"})
      * @return Response
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request)
     {
-        return $this->render('AcmeProductBundle:Admin:delete.html.twig', array(
-            'saved' => $saved,
-            'form' => $form->createView(),
+        // Model
+        $product = $this->getDoctrine()
+                ->getRepository('AcmeProductBundle:Product')
+                ->find($request->get('id'));
+        
+        if ($product) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($product);
+            $em->flush();
+        }
+        
+        return new JsonResponse(array(
+            'status' => 'success',
+            'message' => 'Produkt został pomyślnie usunięty.'
         ));
     }
 }

@@ -29,7 +29,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/product/add, role: ROLE_ADMIN }
         - { path: ^/product/edit, role: ROLE_ADMIN }
-        - { path: ^/product/delete, role: ROLE_ADMIN }
+        - { path: ^/product/delete, role: ROLE_ADMIN}
         - { path: ^/category/, role: ROLE_ADMIN }
         - { path: ^/category$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/profile, role: IS_AUTHENTICATED_REMEMBERED }

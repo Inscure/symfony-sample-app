@@ -1,17 +1,21 @@
-{% extends 'AcmeHomePageBundle::layout.html.twig' %}
+{% extends 'AcmeProductBundle::layout.html.twig' %}
 
 {% block head %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/acmeproduct/css/product.css') }}" />
+    
     <script src="{{ asset('bundles/acmebasket/js/basket.js') }}"></script>
+    <script src="{{ asset('bundles/acmeproduct/js/product.js') }}"></script>
 {% endblock %}
 
 {% block content %}
 
-    <h2>Lista produktów w koszyku</h2>
+    <h2>Lista produktów</h2>
     
     <div id="product-mode">
-        Wszyskich produktów: {{ pagination.getTotalItemCount }}
+        Wszyskich produktów: <span id="products-count">{{ pagination.getTotalItemCount }}</span>
+         {% if is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('acme_product_add') }}">Dodaj produkt</a>
+        {% endif %}
         <div class="fright">Opcje sortowania: 
             <span>{{ knp_pagination_sortable(pagination, 'Id', 'p.id') }}</span>
             <span{% if pagination.isSorted('p.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Name', 'p.name') }}</span>

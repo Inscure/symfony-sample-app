@@ -8,18 +8,24 @@
     {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::MAJOR_VERSION') ~ '.' ~ constant('Symfony\\Component\\HttpKernel\\Kernel::MINOR_VERSION')%}
 
     <h2 class="title">Witaj w sklepie internetowym!</h2>
-    <section class="no-margin">
-        <p>Znajdziesz tutaj listę produktów, które możesz dodać do swojego koszyka.</p>
-        <p>System zapamiętuje Twoje dane, dzięki czemu nie musisz ich podawać przy każdej realizacji zlecenia.</p>
-        <p>Po zalogowaniu się, możliwe będzie zamieszczanie produktów na liście życzeń.</p>
-    </section>
+    
     
     <h3 class="last">Lista funkcjonalności</h2>
-    <section>
-        <ul class="list">
-            <li>Listowanie produktów</li>
-        </ul>
-    </section>
+    
+    
+    <ul class="list">
+        <li>Przegląd produktów, stronicowanie i sortowanie</li>
+        <li>Dodawanie produktów do koszyka</li>
+        <li>Usuwanie produktów z koszyka</li>
+        <li>Zakup towarów (podanie danych dostawy)</li>
+        <li>Zapamiętywanie danych wprowadzonych przy zakupie</li>
+        <li>Rejestracja</li>
+        <li>Logowanie</li>
+        <li>Edycja profilu</li>
+        <li>Zmiana hasła</li>
+        <li>Dodawanie, edycja, usuwanie produktów</li>
+    </ul>
+    
     
     
 {% endblock %}

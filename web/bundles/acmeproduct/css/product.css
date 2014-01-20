@@ -14,13 +14,39 @@
 
 .product-options {
 	font-size: 12px;
-	text-align: center;
+	text-align: right;
 }
 
 .product-options :first-child {
-	margin-right: 20px;
+
 }
 
 #product-mode {
 	margin-bottom: 8px;
+}
+
+.product-block .product-head {
+	margin-bottom: 8px;
+}
+
+.product-block h3, .product-list {
+	display: inline;
+}
+.product-list li {
+	display: inline;
+	list-style-type: none;
+}
+
+#productForm_name {
+	width: 400px;
+}
+
+#productForm_description {
+	width:400px;
+	height: 200px;
+	resize: vertical; 
+	padding: 0 5px;
+}
+.add-to-basket {
+	cursor: pointer;
 }

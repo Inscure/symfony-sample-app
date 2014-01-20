@@ -10,11 +10,11 @@ class ProductForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('price')
+            ->add('name', null, array('label' => 'form.product.name'))
+            ->add('description', 'textarea', array('label' => 'form.description'))
+            ->add('price', 'money', array('label' => 'form.price', 'currency' => 'PLN'))
   
-            ->add('save', 'submit');
+            ->add('save', 'submit', array('label' => 'form.save'));
     }
     
     public function getName() 

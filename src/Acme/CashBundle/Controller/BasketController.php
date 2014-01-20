@@ -4,6 +4,7 @@ namespace Acme\CashBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -96,7 +97,9 @@ class BasketController extends Controller
     }
     
     /**
-     * @Route("/delete/{id}", name="acme_basket_delete")
+     * @Route("/delete", name="acme_basket_delete")
+     * @Method({"POST"})
+     * 
      * @return \Acme\CashBundle\Controller\Response
      */
     public function deleteAction(Request $request)

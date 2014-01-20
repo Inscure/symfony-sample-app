@@ -16,8 +16,9 @@
         <section id="basket-products-count-box">Ilość produktów w koszyku: <span id="basket-products-count">{{products|length}}</span></section>
         {% for product in products %}
             <section class="basket-product-block">
-                <span class="">{{product.name}}</span>
+                
                 <span data-id="{{ product.id }}" class="fright remove-from-basket">&raquo; Usuń z koszyka</span>
+                <span class="strong">{{product.name}}</span> <span class="basket-price">{{ product.price }} zł</span>
             </section>
         {% endfor %}
         <section id="basket-costs" class="tleft">
