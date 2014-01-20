@@ -3,7 +3,6 @@
 namespace Acme\CashBundle\Controller;
 
 use Acme\CashBundle\Form\PaymentForm;
-use Acme\UserBundle\Entity\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -47,7 +46,13 @@ class PaymentController extends Controller
             return $this->redirect($this->generateUrl('acme_basket_list'));
         }
         
-        $form = $this->createForm(new PaymentForm(), $session->get('client', array()));
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $client = $this->get('security.context')->getToken()->getUser();
+        } else {
+            $client = $session->get('client', array());
+        }
+        
+        $form = $this->createForm(new PaymentForm(), $client);
         
         $form->handleRequest($request);
            
@@ -56,12 +61,11 @@ class PaymentController extends Controller
             $session->remove('basket');
             
             if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-                $user = new User;
+                $em->persist($client);
+                $em->flush();
                 
-                $userRow = $this->get('security.context')->getToken()->getUser();
-                //$userRow->set
-                //var_dump($user->getId()); exit;
-                
+                // Usuwanie sesji, by dane nie były widoczne po wylogowaniu
+                $session->remove('client');
             } else {
                 $session->set('client', $form->getData());
             }

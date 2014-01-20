@@ -1,1 +1,16 @@
-Hello {{ name }}!
+{% extends 'AcmeUserBundle::layout.html.twig' %}
+
+{% block content %}
+    {% if success %}
+        <p>Zmiany zostały zapisane pomyślnie.</p>
+        <p><a href="{{ path('fos_user_profile_show') }}">Wróć do profilu</a></p>
+    {% else %}
+        
+        <p>Uzupełnij dane do wysyłki zakupionych produktów:</p>
+    
+        {% include 'AcmeUserBundle:Profile:payment_form.html.twig' %}
+    
+    {% endif %}
+{% endblock %}
+
+
