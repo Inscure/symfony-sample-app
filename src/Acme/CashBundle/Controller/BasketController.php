@@ -5,6 +5,7 @@ namespace Acme\CashBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Acme\ProductBundle\Entity\Product;
 
@@ -58,20 +59,94 @@ class BasketController extends Controller
     }
     
     /**
-     * @Route("/add", name="acme_basket_add")
+     * @Route("/add/{id}", name="acme_basket_add")
      * @return \Acme\CashBundle\Controller\Response
      */
-    public function addAction()
+    public function addAction(Request $request)
     {
-        return new Response;
+        $session = $request->getSession();
+        
+        if ($session->has('basket')) {
+            $basket = $session->get('basket');
+        } else {
+            $basket = array();
+        }
+        
+        $productId = (int) $request->get('id');
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $product = $em->getRepository('AcmeProductBundle:Product')->find($productId);
+        
+       
+        if ($product) {
+            $basket[] = $productId;
+            $session->set('basket', $basket);
+            
+            return new JsonResponse(array(
+                'status' => 'success',
+                'message' => 'Produkt został pomyślnie dodany do koszyka.'
+            ));
+        }
+        
+        return new JsonResponse(array(
+            'status' => 'error',
+            'message' => 'Wybrany produkt nie jest już dostępny.'
+        ));
     }
     
     /**
-     * @Route("/delete", name="acme_basket_delete")
+     * @Route("/delete/{id}", name="acme_basket_delete")
      * @return \Acme\CashBundle\Controller\Response
      */
-    public function deleteAction()
+    public function deleteAction(Request $request)
     {
-        return new Response;
+        $session = $request->getSession();
+        
+        $netto = 0; 
+        $brutto = 0;
+        
+        if ($session->has('basket')) {
+            $basket = $session->get('basket');
+            
+            $productId = (int) $request->get('id');
+            
+            $index = array_search($productId, $basket);
+            
+            if (is_numeric($index)) {
+                unset($basket[$index]);
+                $basket = array_values($basket);
+                
+                // Aktualizacja koszyka
+                $session->set('basket', $basket);
+                
+                $em = $this->getDoctrine()->getManager();
+            
+                $query = $em->createQueryBuilder();
+                
+                $query->select('sum(p.price) as price')
+                   ->from('AcmeProductBundle:Product', 'p')
+                   ->where('p.id IN (?1)')
+                   ->setParameter(1, $basket);
+                
+                $product = $query->getQuery()->getResult();
+
+                if ($product) {
+                    $brutto = round($product[0]['price'], 2);
+                    $netto = round($brutto/1.23, 2);
+                }
+              
+            }
+        }
+        
+        return new JsonResponse(array(
+            'status' => 'success',
+            'message' => 'Wybrany produkt został usunięty z koszyka.',
+            'costs' => array(
+                'netto' => $netto,
+                'brutto' => $brutto,
+                'vat' => '23%'
+            )
+        ));
     }
 }

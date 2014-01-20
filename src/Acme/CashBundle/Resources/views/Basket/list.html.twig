@@ -1,25 +1,33 @@
 {% extends 'AcmeCashBundle::layout.html.twig' %}
 
+{% block head %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/acmebasket/js/basket.js') }}"></script>
+{% endblock %}
+
 {% block content %}
-    {% if products is empty %}
+    
+    <section id="basket-status" class="{% if products is not empty %} hide {% endif %}">
         <p>Twój koszyk jest pusty.</p>
         <p>Przejdź do <a href="{{ path('acme_product_list') }}">listy produktów</a>, by coś tu dodać.</p>
-    {% else %}
-        <p>Ilość produktów w koszyku: {{products|length}}</p>
+    </section>
+    
+    {% if products is not empty %}
+        <section id="basket-products-count-box">Ilość produktów w koszyku: <span id="basket-products-count">{{products|length}}</span></section>
         {% for product in products %}
-            <section class="product-block">
+            <section class="basket-product-block">
                 <span class="">{{product.name}}</span>
-                <span class="fright">&raquo; Usuń z koszyka</span>
+                <span data-id="{{ product.id }}" class="fright remove-from-basket">&raquo; Usuń z koszyka</span>
             </section>
         {% endfor %}
-        <section id="costs" class="tright">
-            <p>Kwota netto: {{ netto }} zł</p>
-            <p>Podatek: 23%</span>
-            <p><strong>Do zapłaty:</strong> {{ brutto }} zł</p>
+        <section id="basket-costs" class="tleft">
+            <p>Kwota netto: <span id="basket-netto">{{ netto }}</span> zł</p>
+            <p>Podatek: <span id="basket-vat">23%</span></span>
+            <p><strong>Do zapłaty:</strong> <span id="basket-brutto">{{ brutto }}</span> zł</p>
         </section>
         
-        <section class="tright">
-            <a href="{{ path('acme_basket_payment')  }}"><button>Zapłać</button></a>
+        <section id="basket-submit" class="tright">
+            <a href="{{ path('acme_basket_account')  }}"><button>Zapłać</button></a>
         </section>
     {% endif %}
 

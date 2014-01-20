@@ -20,6 +20,6 @@ class PaymentForm extends AbstractType
     
     public function getName() 
     {
-        return 'productForm';
+        return 'paymentForm';
     }
 }

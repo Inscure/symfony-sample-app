@@ -1,8 +1,28 @@
-#costs p {
+#basket-costs p {
 	margin: 0;
 	padding: 0;
 }
 
-#costs :first-child {
+#basket-costs :first-child {
+	margin-top: 8px;
+}
+
+.remove-from-basket {
+	cursor: pointer;
+}
+
+#basket-products-count-box {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 5px;
+}
+
+#basket-costs {
+	padding-top: 5px;
+	margin-top: 5px;
+	border-top: 1px solid #ddd;
+}
+
+#basket-submit {
 	margin-top: 8px;
 }

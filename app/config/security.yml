@@ -20,6 +20,7 @@ security:
                 login_path: /auth/login
             logout:
                 path: /auth/logout
+                invalidate_session: false
             anonymous:    true
 
     access_control:

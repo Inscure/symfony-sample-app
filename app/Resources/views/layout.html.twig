@@ -3,6 +3,10 @@
 {% block head %}
     <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('layout/css/style.css') }}" />
+    <script src="{{ asset('layout/js/jquery.js') }}"></script>
+    <script>
+        var addr = '{{ path('main') }}';
+    </script>
 {% endblock %} 
 
 {% block title 'Demo Bundle' %}

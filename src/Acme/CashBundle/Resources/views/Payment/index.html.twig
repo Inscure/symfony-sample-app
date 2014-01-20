@@ -1,39 +1,45 @@
 {% extends 'AcmeCashBundle::layout.html.twig' %}
 
 {% block content %}
-    <p>Uzupełnij poniższy formularz. Na podany adres zostaną wysłane zakupione produkty.</p>
-    <p>Kwota do zapłaty przy odbiorze: {{ costs }} zł.</p>
-    {{ form_start(form) }}
+    {% if success %}
+        <p>Twoje zlecenie zostało przekazane do realizacji. Dziękujemy.</p>
+        <p><a href="{{ path('acme_product_list') }}">Wróć do sklepu</a></p>
+    {% else %}
+        <p>Uzupełnij poniższy formularz. Na podany adres zostaną wysłane zakupione produkty.</p>
+        <p>Kwota do zapłaty przy odbiorze: {{ costs }} zł.</p>
+        {{ form_start(form) }}
 
-        {{ form_errors(form) }}
+            {{ form_errors(form) }}
 
-        <div class="field-box">
-            {{ form_label(form.name) }} 
-            {{ form_widget(form.name) }}
-            {{ form_errors(form.name) }}
-        </div>
-        <div class="field-box">
-            {{ form_label(form.surname) }} 
-            {{ form_widget(form.surname) }}
-            {{ form_errors(form.surname) }}
-        </div>
-        <div class="field-box">
-            {{ form_label(form.city) }} 
-            {{ form_widget(form.city) }}
-            {{ form_errors(form.city) }}
-        </div>
-        <div class="field-box">
-            {{ form_label(form.street) }} 
-            {{ form_widget(form.street) }}
-            {{ form_errors(form.street) }}
-        </div>
-        <div class="field-box">
-            {{ form_label(form.number) }} 
-            {{ form_widget(form.number) }}
-            {{ form_errors(form.number) }}
-        </div>
-        <div class="field-box">
-            {{ form_widget(form.save) }}
-        </div>
-    {{ form_end(form) }} 
+            <div class="field-box">
+                {{ form_label(form.name) }} 
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+            <div class="field-box">
+                {{ form_label(form.surname) }} 
+                {{ form_widget(form.surname) }}
+                {{ form_errors(form.surname) }}
+            </div>
+            <div class="field-box">
+                {{ form_label(form.city) }} 
+                {{ form_widget(form.city) }}
+                {{ form_errors(form.city) }}
+            </div>
+            <div class="field-box">
+                {{ form_label(form.street) }} 
+                {{ form_widget(form.street) }}
+                {{ form_errors(form.street) }}
+            </div>
+            <div class="field-box">
+                {{ form_label(form.number) }} 
+                {{ form_widget(form.number) }}
+                {{ form_errors(form.number) }}
+            </div>
+            <div class="field-box">
+                {{ form_widget(form.save) }}
+            </div>
+        {{ form_end(form) }} 
+    {% endif %}
+    
 {% endblock %}
