@@ -17,14 +17,6 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Baza danych: `symfony`
---
-CREATE DATABASE IF NOT EXISTS `symfony` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `symfony`;
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `fos_user`
 --
 
