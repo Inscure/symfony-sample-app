@@ -10,4 +10,10 @@ Sample application based on Symfony 2
 - Password: admin
 
 Konfiguracja bazy danych:
+-------------------------
 https://github.com/Inscure/symfony-sample-app/blob/master/app/config/parameters.yml
+
+Zalecana nazwa vhosta:
+----------------------
+
+sklep.test
