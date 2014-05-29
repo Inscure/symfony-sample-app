@@ -1,7 +1,7 @@
 symfony-sample-app
 ==================
 
-System sklepiku. Prezentacja w ramach II etapu rekrutacji
+System sklepiku.
 
 Sample application based on Symfony 2
 
