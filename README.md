@@ -2,7 +2,6 @@ symfony-sample-app
 ==================
 
 System sklepiku. Prezentacja w ramach II etapu rekrutacji
-Autor: Paweł Zegardło
 
 Sample application based on Symfony 2
 
